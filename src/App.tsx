@@ -1,6 +1,6 @@
 import './App.css';
 
-import { DemoComponent } from './components/DemoComponent';
+import { AsyncButton } from './components/AsyncButton';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <p>
           Xstate machine test
         </p>
-        <DemoComponent />
+        <AsyncButton />
       </header>
     </div>
   );
