@@ -5,14 +5,15 @@ enum AuthMachineStates {
     Authenticated = 'authenticated'
 }
 
+// casing matters for string apparently
 enum AuthMachineEvents {
-    SIGN_IN = 'signIn',
-    SIGN_OUT = 'signOut'
+    SIGN_IN = 'SIGN_IN',
+    SIGN_OUT = 'SIGN_OUT'
 }
 
 export const authMachine = createMachine({
     id: 'auth',
-    initial: AuthMachineStates.Unauthenticated,
+    initial: AuthMachineStates.Authenticated,
     states: {
         [AuthMachineStates.Unauthenticated]: {
             on: {

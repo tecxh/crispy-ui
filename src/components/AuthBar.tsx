@@ -6,9 +6,9 @@ export const AuthBar = () => {
     const { ready, dispose, signOut } = AuthService();
 
     useEffect(() => {
-        ready(); // start service
+        ready(); // lift this up - you'd want one auth service shared across a platform
 
-        return dispose(); // stop service onunmount ? still not sure about this
+        return () => dispose();
     });
 
 
