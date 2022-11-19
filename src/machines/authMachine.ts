@@ -7,8 +7,8 @@ enum AuthMachineStates {
 
 // casing matters for string apparently
 enum AuthMachineEvents {
-    SIGN_IN = 'SIGN_IN',
-    SIGN_OUT = 'SIGN_OUT'
+    SignIn = 'SIGN_IN',
+    SignOut = 'SIGN_OUT'
 }
 
 export const authMachine = createMachine({
@@ -17,7 +17,7 @@ export const authMachine = createMachine({
     states: {
         [AuthMachineStates.Unauthenticated]: {
             on: {
-                [AuthMachineEvents.SIGN_IN]: { 
+                [AuthMachineEvents.SignIn]: { 
                     target: AuthMachineStates.Authenticated
                 },
             }
@@ -25,7 +25,7 @@ export const authMachine = createMachine({
 
         [AuthMachineStates.Authenticated]: {
             on: {
-                [AuthMachineEvents.SIGN_OUT]: { 
+                [AuthMachineEvents.SignOut]: { 
                     target: AuthMachineStates.Unauthenticated
                 },
             }
@@ -45,11 +45,11 @@ export const AuthService = () => {
     }
 
     const signIn = () => {
-        auth.send({ type: AuthMachineEvents.SIGN_IN });
+        auth.send({ type: AuthMachineEvents.SignIn });
     }
 
     const signOut = () => {
-        auth.send({ type: AuthMachineEvents.SIGN_OUT });
+        auth.send({ type: AuthMachineEvents.SignOut });
     }
 
     return { ready, dispose, signIn, signOut };
